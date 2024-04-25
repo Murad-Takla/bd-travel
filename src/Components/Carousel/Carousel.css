@@ -1,0 +1,71 @@
+/* Carousel.css */
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-text {
+  flex: 0 1 100%;
+  padding: 20px;
+}
+
+.carousel-slides {
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow slides to wrap on smaller screens */
+}
+
+.slide-link {
+  position: relative;
+  margin-bottom: 20px; /* Add space between slides */
+  text-decoration: none;
+  width: calc(50% - 10px); /* Ensure two slides per row, accounting for margin */
+  max-width: 200px; /* Set maximum width for slides */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.slide-image {
+  width: 100%; /* Make image responsive */
+  height: auto;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.slide-link:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.slide-link:hover .slide-image {
+  transform: translateY(-5px); /* Add translation on hover for animation effect */
+}
+
+@media (min-width: 768px) {
+  .carousel-text {
+      flex: 0 1 50%;
+  }
+
+  .carousel-slides {
+      flex: 0 1 45%;
+  }
+
+  .slide-link {
+      width: calc(33.33% - 10px); /* Ensure three slides per row on larger screens */
+  }
+}
