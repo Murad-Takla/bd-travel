@@ -2,6 +2,7 @@
   "name": "bdtravel-client",
   "private": true,
   "version": "0.0.0",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,10 +12,12 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
+    "@react-google-maps/api": "^2.19.3",
     "firebase": "^10.11.1",
     "pagedone": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-maps": "^9.4.5",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.1.0",
     "react-router-dom": "^6.23.0"

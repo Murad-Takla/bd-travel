@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MyContext } from '../../Context/Context';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import Logo from '../../logo';
 
 const Login = () => {
 
@@ -24,8 +25,9 @@ const Login = () => {
              navigate("/news")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+               
+                if(error.message === "Firebase: Error (auth/invalid-credential).") return toast.error("Give correct email and password !!")
+
             });
 
 
@@ -35,7 +37,7 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div >
 
             <>
                 {/* https://play.tailwindcss.com/MIwj5Sp9pw */}
@@ -45,12 +47,14 @@ const Login = () => {
                             className="hidden lg:block lg:w-1/2  p-5 my-auto"
 
                         >
-                            <img src="../../../logo.svg" alt="" />
+                            <Logo></Logo>
                         </div>
                         <div className="w-full p-8 lg:w-1/2">
 
-                            <div className='flex justify-center  gap-3'>
-                                <img className='w-[50px]' src="../../../logo.svg" alt="" />
+                            <div className='flex items-center  justify-center gap-3'>
+                               <div className='w-[70px]  '>
+                                <Logo></Logo>
+                               </div>
                                 <h2 className="text-2xl font-semibold text-gray-700 text-center">
                                     Travel Guru
                                 </h2>

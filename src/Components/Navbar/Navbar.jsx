@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from '../Carousel/Carousel';
 import { MyContext } from '../../Context/Context';
+import { FaUserCircle } from "react-icons/fa";
+import Logo from '../../logo';
+
 
 const Navbar = () => {
     const { user, LogOut } = useContext(MyContext)
@@ -12,7 +15,7 @@ const Navbar = () => {
 
         LogOut().then(() => { }).catch(() => { })
     }
-    console.log(user)
+    // console.log(user)
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,14 +23,19 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className="py-2 text-black border-gray-200 dark:bg-gray-900">
+            <nav className="p-2 text-black border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap items-center justify-between container mx-auto ">
-                    <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src='logo.svg' className="h-8" alt="Travel Guru" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                            Travel Guru
-                        </span>
-                    </Link>
+                    <div className='flex align-center justify-center items-center'>
+                        <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
+                            <div className='w-[50px] '>
+                                <Logo></Logo>
+                            </div>
+                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                                Travel Guru
+                            </span>
+
+                        </Link>
+                    </div>
                     <div className="flex items-center">
                         <div className={`hidden md: ${isMobileMenuOpen ? 'md:hidden' : ''}`}>
                             <div className="relative">
@@ -105,24 +113,11 @@ const Navbar = () => {
                                 </Link>
                             </li>
 
-                            {
-                                user?.uid ?
-                                    <li>
-                                        <Link
-                                            onClick={logoutHandler}
-                                            className=" py-2 px-3 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 md:hover:bg-transparent">
-                                            LogOut
-                                        </Link>
-                                    </li>
-
-                                    :
-                                    <li >
-                                        <Link to='/login' className=" py-2 px-3 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 md:hover:bg-transparent">
-                                            Login
-                                        </Link>
-                                    </li>
-
-                            }
+                            <li >
+                                <Link to='/login' className=" py-2 px-3 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 md:hover:bg-transparent">
+                                    Login
+                                </Link>
+                            </li>
 
 
                             <li>
@@ -135,6 +130,31 @@ const Navbar = () => {
                             </li>
 
                         </ul>
+                    </div>
+
+
+                    {
+                        user?.uid ? <>
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li><Link to='/profile'>Profile</Link></li>
+                                    <li><Link to='/login' onClick={logoutHandler}>Logout</Link></li>
+
+                                </ul>
+                            </div>
+
+                        </> : <div className='sm:invisible lg:visible'>
+                            <FaUserCircle />
+                        </div>
+                    }
+
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+
                     </div>
                 </div>
             </nav>

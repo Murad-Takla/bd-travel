@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 //className=''
 const Carousel = () => {
     return (
-        <div className='container mx-auto mt-[480px]'>
+        <div className='container mx-auto mt-[480px] '>
             <div className="carousel ">
                 <div className="carousel-text text-black">
                     <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl dark:text-black">Cox's Bazar</h1>
@@ -16,8 +16,8 @@ const Carousel = () => {
                         </svg>
                     </button>
                 </div>
-                <div className="carousel-slides">
-                    <Link to='/' className="slide-link">
+                <div className="carousel-slides ">
+                    <Link to='/' className="slide-link ">
                         <img src="https://i.postimg.cc/W34K1hX5/sundorbon.png" alt="Slide 1" className="slide-image" />
                         <span className="tooltip-text ">sundorbon</span>
                     </Link>

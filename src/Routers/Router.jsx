@@ -7,6 +7,10 @@ import Contact from '../Pages/Contact/Contact'
 import Login from '../Pages/Login/Login'
 import Carousel from '../Components/Carousel/Carousel'
 import Register from '../Pages/Register/Register'
+import Profile from '../Pages/Profile/Profile'
+import PrivateRoute from './PrivateRoute'
+import Rooms from '../Pages/Rooms/Rooms'
+import Modal from '../Components/Modal/Modal'
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +21,7 @@ export const router = createBrowserRouter([
            
             {
                 path: "/news",
-                element: <News></News>
+                element: <PrivateRoute><News></News></PrivateRoute>
             },
             {
                 path: "/destination",
@@ -39,6 +43,20 @@ export const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>
             },
+            {
+                path: "/profile",
+                element: <Profile></Profile>
+            },
+            {
+                path: "/rooms",
+                loader : () => {return fetch (`https://bd-travel-server-silk.vercel.app/rooms`)},
+                element: <Rooms></Rooms>
+            },
+            {
+                path : "/rooms/:id",
+                element : <Modal></Modal>,
+                
+            }
         ]
     }
 ])

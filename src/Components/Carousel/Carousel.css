@@ -66,6 +66,7 @@
   }
 
   .slide-link {
+      
       width: calc(33.33% - 10px); /* Ensure three slides per row on larger screens */
   }
 }

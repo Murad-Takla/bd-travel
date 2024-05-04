@@ -5,8 +5,8 @@ import Carousel from '../../Components/Carousel/Carousel';
 
 const HomePage = () => {
     return (
-        <div className='homepage-container'>
-            <Navbar ></Navbar> 
+        <div className=''>
+            {/* <Navbar ></Navbar>  */}
             {/* <Carousel></Carousel> */}
         </div>
 
